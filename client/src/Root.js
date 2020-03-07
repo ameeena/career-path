@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
 import App from './components/App'
 import Default from './components/Default'
-import Profession from './components/professions/professions'
+import Profession from './containers/Profession';
 
 const Root = ({store}) => (
     <Provider store = {store}>

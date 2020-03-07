@@ -6,7 +6,7 @@ const expressSession = require('../node_modules/express-session');
 module.exports = function() {
 
     const app = express();
-
+    
     //To parse URL encoded data
     app.use(bodyParser.urlencoded({extended: false}));
     //To parse json data
@@ -30,7 +30,7 @@ module.exports = function() {
         next();
     });
 
-    require('../routes/career-routes.js')(app);
+    require('../routes/profession-routes.js')(app);
 
     return app;
 

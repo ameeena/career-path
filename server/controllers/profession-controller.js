@@ -2,7 +2,7 @@ const configureDB = require('../config/arangoDB-config');
 const db = configureDB();
 const careerCollection = db.collection('career');
 
-exports.getCareerList = (req,res) =>{
+exports.getProfessionList = (req,res) =>{
   careerCollection
   .all()
   .then((response) => {
@@ -14,14 +14,20 @@ exports.getCareerList = (req,res) =>{
   });
 };
 
-exports.addCareer = (req,res) => {
-    // TO DO : Add career values
-};
-
-exports.deleteCareer = (req,res) => {
-
+exports.getProfessionById = (req,res) => {
+  console.log(req);
 }
 
-exports.updateCareer = (req,res) => {
+exports.addProfession = (req,res) => {
+    // TO DO : Add career values
+  console.log(req);
 
+};
+
+exports.deleteProfession = (req,res) => {
+  console.log(req);
+}
+
+exports.updateProfession = (req,res) => {
+  console.log(req);
 }

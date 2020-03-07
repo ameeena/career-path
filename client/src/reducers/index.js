@@ -2,6 +2,8 @@
 // Reducers specify how application changes happen!!
 import { combineReducers } from "redux";
 
-export default combineReducers({
+import  profession  from './profession';
 
+export default combineReducers({
+    profession : profession
 });
