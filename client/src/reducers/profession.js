@@ -1,4 +1,4 @@
-import { ActionTypes as types } from '../constants';
+import { ActionTypes as types } from '../constants/constants';
 var defaultState = {
     professionsList: []
 };

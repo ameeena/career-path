@@ -1,6 +1,6 @@
 // Action Creators!!
 
-import { ActionTypes as types } from '../constants';
+import { ActionTypes as types } from '../constants/constants';
 import axios from 'axios';
 
 export function fetchProfession() {

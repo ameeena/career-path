@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/actions';
+import { Card } from '@material-ui/core';
+import * as actions from '../../actions/actions';
 
+  
 //Class components are used for container components and functional components for presentational
-class Profession extends React.Component {
+class ProfessionsPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -15,12 +17,16 @@ class Profession extends React.Component {
     }
 
     render(){
+        // const classes = useStyles();
+
         const listItems = this.props.professionsList.map((profession) =>
-            <li key = {profession._id}>{profession.name}</li>
+            // <li key = {profession._id}>{profession.name}</li>
+            <Card key = {profession._id}> {profession.name} </Card>
         );
         return (
             <div>
-                 <ul>{listItems}</ul>,
+                 {/* <ul>{listItems}</ul>, */}
+                 {listItems}
             </div>
         )
     }
@@ -30,4 +36,4 @@ export default connect((state) => {
  return {
     professionsList : state.profession.professionsList
  }
-}) (Profession);
+}) (ProfessionsPage);
