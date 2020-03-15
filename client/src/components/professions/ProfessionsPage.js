@@ -4,7 +4,7 @@ import { Card } from '@material-ui/core';
 import * as actions from '../../actions/actions';
 
   
-//Class components are used for container components and functional components for presentational
+//Most of the time : Class components are used for container components and functional components for presentational
 class ProfessionsPage extends React.Component {
 
     constructor(props) {
@@ -17,23 +17,24 @@ class ProfessionsPage extends React.Component {
     }
 
     render(){
-        // const classes = useStyles();
-
         const listItems = this.props.professionsList.map((profession) =>
-            // <li key = {profession._id}>{profession.name}</li>
             <Card key = {profession._id}> {profession.name} </Card>
         );
         return (
             <div>
-                 {/* <ul>{listItems}</ul>, */}
                  {listItems}
             </div>
         )
     }
 }
 
-export default connect((state) => {
- return {
-    professionsList : state.profession.professionsList
- }
-}) (ProfessionsPage);
+// What state should i expose as props. 
+// Only these components change? I think...
+function mapStateToProps(state) {
+    return {
+        professionsList : state.profession.professionsList
+    }
+}
+
+// Connect enables connecting your react component to the store.
+export default connect(mapStateToProps) (ProfessionsPage);
