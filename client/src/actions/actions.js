@@ -9,6 +9,7 @@ export function fetchProfession() {
     }
 }
 
+// Making AJAX calls!! 
 function makeGetProfessionAjaxCall(dispatch) {
     dispatch({type:types.REQUEST_PROFESSIONS});
   
