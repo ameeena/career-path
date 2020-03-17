@@ -1,18 +1,20 @@
-import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from "redux";
+import { createLogger } from "redux-logger";
+import thunk from "redux-thunk";
 
+//reduxImmutableStateInvariant
 
-import rootReducer from '../reducers';
+import rootReducer from "../reducers";
 
-var logger = createLogger({
-    collapsed: true
+const logger = createLogger({
+  collapsed: true
 });
 
-var store = createStore(
-    rootReducer,
-    applyMiddleware(thunk, logger)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // Add support for redux tools
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk, logger))
 );
 
 export default store;
-
