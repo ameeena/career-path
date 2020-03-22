@@ -1,0 +1,8 @@
+{
+    "database": {
+        "username" : "root",
+        "password" : "admin",
+        "name": "career-path",
+        "url" : "http://127.0.0.1:8529"
+    }
+}
