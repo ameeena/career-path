@@ -4,5 +4,9 @@
         "password" : "admin",
         "name": "career-path",
         "url" : "http://127.0.0.1:8529"
-    }
+    },
+    "development" : {
+        "url" : "127.0.0.1",
+        "port" : "3500"
+    } 
 }

@@ -1,9 +1,10 @@
 const configureExpress = require('./config/express-config');
+const { development } = require('./config');
 
 const app = configureExpress();
 
-const hostname = '127.0.0.1';
-const port = '3500';
+const hostname = development.url;
+const port = development.port;
 
 
 app.listen(port, hostname, () =>{
