@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 
 import ProfessionList from "./ProfessionList";
 import * as professionActions from "../../actions/professionActions";
+import Spinner from "../common/Spinner";
 
 //Most of the time : Class components are used for container components and functional components for presentational
 class ProfessionsPage extends React.Component {
@@ -22,12 +23,16 @@ class ProfessionsPage extends React.Component {
     return (
       <div>
         {this.state.redirectToAddProfessionPage && <Redirect to="/profession" />}
+        {this.props.loading ? <Spinner/> : (
+        <>
         <button
           onClick={() => this.setState({ redirectToAddProfessionPage: true })}
         >
           Add Profession
         </button>
         <ProfessionList professionsList={this.props.professionsList} />
+        </>
+        ) }
       </div>
     );
   }
@@ -35,7 +40,8 @@ class ProfessionsPage extends React.Component {
 
 ProfessionsPage.propTypes = {
   professionsList: PropTypes.array.isRequired,
-  bindActions: PropTypes.object.isRequired
+  bindActions: PropTypes.object.isRequired,
+  loading : PropTypes.bool.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
@@ -48,7 +54,8 @@ function mapDispatchToProps(dispatch) {
 // Only these components change? I think...
 function mapStateToProps(state) {
   return {
-    professionsList: state.professionsList
+    professionsList: state.professionsList,
+    loading : state.apiCallsInProgress > 0
   };
 }
 

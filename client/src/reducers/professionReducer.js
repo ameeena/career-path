@@ -1,4 +1,4 @@
-import { ActionTypes as types } from "../constants/constants";
+import { ActionTypes as types } from "../constants/actionTypes";
 import initialState from "./initialState";
 
 function professionReducer(state = initialState.professionsList, action) {

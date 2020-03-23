@@ -1,3 +1,4 @@
 export default {
-  professionsList: []
+  professionsList: [],
+  apiCallsInProgress : 0
 };
