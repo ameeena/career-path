@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { Redirect } from "react-router-dom";
-
 import ProfessionList from "./ProfessionList";
 import * as professionActions from "../../actions/professionActions";
-import Spinner from "../common/Spinner";
+import { Typography, Button, CircularProgress } from "@material-ui/core";
 
 //Most of the time : Class components are used for container components and functional components for presentational
 class ProfessionsPage extends React.Component {
@@ -22,17 +21,29 @@ class ProfessionsPage extends React.Component {
   render() {
     return (
       <div>
-        {this.state.redirectToAddProfessionPage && <Redirect to="/profession" />}
-        {this.props.loading ? <Spinner/> : (
-        <>
-        <button
-          onClick={() => this.setState({ redirectToAddProfessionPage: true })}
-        >
-          Add Profession
-        </button>
-        <ProfessionList professionsList={this.props.professionsList} />
-        </>
-        ) }
+        {this.state.redirectToAddProfessionPage && (
+          <Redirect to="/profession" />
+        )}
+        {this.props.loading ? (
+          <CircularProgress align="center" />
+        ) : (
+          <>
+            <Typography variant="h2" align="center">
+              Professions
+            </Typography>
+
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() =>
+                this.setState({ redirectToAddProfessionPage: true })
+              }
+            >
+              Add Profession
+            </Button>
+            <ProfessionList professionsList={this.props.professionsList} />
+          </>
+        )}
       </div>
     );
   }
@@ -41,7 +52,7 @@ class ProfessionsPage extends React.Component {
 ProfessionsPage.propTypes = {
   professionsList: PropTypes.array.isRequired,
   bindActions: PropTypes.object.isRequired,
-  loading : PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
@@ -55,7 +66,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     professionsList: state.professionsList,
-    loading : state.apiCallsInProgress > 0
+    loading: state.apiCallsInProgress > 0
   };
 }
 

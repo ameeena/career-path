@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TextInput from "../common/TextInput";
-// import SelectInput from "../common/SelectInput";
+import { Typography, TextField, Button } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 
 const ProfessionForm = ({
   profession,
@@ -12,40 +12,36 @@ const ProfessionForm = ({
 }) => {
   return (
     <form onSubmit={onSave}>
-      <h2>{profession._key ? "Edit" : "Add"} Profession</h2>
-      {errors.onSave && <div role="alert">{errors.onSave}</div>}
-      <TextInput
-        name="name"
-        label="Name"
-        value={profession.name}
-        onChange={onChange}
-        error={errors.name}
-      />
+      <Typography variant="h2" align="center">
+        {profession._key ? "Edit" : "Add"} Profession{" "}
+      </Typography>
 
-      {/* <SelectInput
-        name="authorId"
-        label="Author"
-        value={profession.authorId || ""}
-        defaultOption="Select Author"
-        options={authors.map(author => ({
-          value: author.id,
-          text: author.name
-        }))}
-        onChange={onChange}
-        error={errors.author}
-      /> */}
+      {errors.onSave && (
+        <Alert severity="error" role="alert">
+          {errors.onSave}
+        </Alert>
+      )}
 
-      {/* <TextInput
-        name="category"
-        label="Category"
-        value={profession.category}
-        onChange={onChange}
-        error={errors.category}
-      /> */}
+      <div>
+        <TextField
+          error={errors.name}
+          name="name"
+          label="Name"
+          variant="outlined"
+          required
+          value={profession.name}
+          onChange={onChange}
+        />
+      </div>
 
-      <button type="submit" disabled={saving}>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        disabled={saving}
+      >
         {saving ? "Saving..." : "Save"}
-      </button>
+      </Button>
     </form>
   );
 };

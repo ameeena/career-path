@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 
 import ProfessionForm from "./ProfessionForm";
 import * as professionActions from "../../actions/professionActions";
-import Spinner from "../common/Spinner";
+import { CircularProgress } from "@material-ui/core";
 
 // Empty profession at the beginning
 // TODO: Add a model for profession
@@ -37,19 +37,18 @@ const ManageProfessionPage = ({ professionsList, history, ...props }) => {
     }));
   }
 
-  function formIsValid () {
+  function formIsValid() {
     const { name } = professionsList;
     const errors = {};
 
-    if(!name) 
-      errors.name = "Name is required!!";
+    if (!name) errors.name = "Name is required!!";
     setErrors(errors);
 
     return Object.keys(errors).length === 0;
   }
   // Handle submit button
   function handleSave(event) {
-    if(!formIsValid) return;
+    if (!formIsValid) return;
     setSave(true);
     event.preventDefault();
     props.bindActions
@@ -65,7 +64,7 @@ const ManageProfessionPage = ({ professionsList, history, ...props }) => {
 
   // Load the edit form
   return professionsList.length === 0 ? (
-    <Spinner />
+    <CircularProgress />
   ) : (
     <ProfessionForm
       profession={profession}

@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
 
 const HomePage = () => (
   <div>
-    Home Page!!
+    <Typography variant="h2" align="center" gutterBottom>
+      Home Page
+    </Typography>
   </div>
-)
-export default HomePage
+);
+export default HomePage;
